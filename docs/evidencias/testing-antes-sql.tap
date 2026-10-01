@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: Plan de pruebas EVA3
+not ok 1 - Plan de pruebas EVA3
+  ---
+  duration_ms: 750.4845
+  type: 'test'
+  location: 'S:\\Inacap\\Semestre 4\\Ing Software\\ProyectoLKV_EVA3\\tests\\security.test.js:31:7'
+  failureType: 'testCodeFailure'
+  error: 'table points has 10 columns but 11 values were supplied'
+  code: 'ERR_SQLITE_ERROR'
+  stack: |-
+    openDatabase (file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/backend/infrastructure/database.js:11:21)
+    createApp (file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/backend/server.js:15:12)
+    TestContext.<anonymous> (file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:32:13)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+    async file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:31:1
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 962.8432
+

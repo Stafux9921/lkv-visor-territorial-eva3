@@ -1,0 +1,27 @@
+@startuml
+hide footbox
+skinparam maxMessageSize 190
+actor Consultor as U
+boundary Frontend as UI
+control "Backend\nHTTP y PointService" as API
+database SQLite as DB
+U -> UI: Descargar informe
+UI -> API: POST /api/points/{id}/report
+API -> API: Validar origen y límite de solicitudes
+API -> DB: Consultar punto\nmediante PointRepository
+DB --> API: Registro o ausencia
+alt Punto inexistente o no visible
+ API --> UI: 404
+ UI --> U: Mensaje recuperable
+else Punto disponible
+ API -> API: pointPDF(punto, idInforme)
+ alt Fallo al generar o registrar
+  API --> UI: Error controlado
+  UI --> U: Permitir reintento
+ else PDF generado y registro correcto
+  API -> DB: INSERT reports\n(id, punto, versión, fecha)
+  API --> UI: 200 application/pdf\nContent-Disposition attachment
+  UI --> U: Descargar PDF referencial
+ end
+end
+@enduml

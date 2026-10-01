@@ -1,0 +1,10 @@
+import {DatabaseSync} from 'node:sqlite';
+import {mkdirSync} from 'node:fs';
+import {resolve,join} from 'node:path';
+const runtime=resolve(process.env.LKV_DATA_DIR||'runtime');
+const target=join(runtime,'backups');mkdirSync(target,{recursive:true});
+const db=new DatabaseSync(join(runtime,'lkv.sqlite'));
+const file=join(target,'lkv-'+new Date().toISOString().replaceAll(':','-')+'.sqlite');
+db.prepare('VACUUM INTO ?').run(file);db.close();
+console.log('Copia coherente creada: '+file);
+console.log('Conserva encryption.key por separado bajo acceso restringido. Sin esa clave los contactos son irrecuperables.');

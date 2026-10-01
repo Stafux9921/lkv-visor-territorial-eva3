@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+class Point <<registro SQL>> {
+ +id: string
+ +name: string
+ +latitude: real
+ +longitude: real
+ +status: string
+ +version: integer
+}
+class Category <<registro SQL>> {
+ +id: integer
+ +name: string
+ +color: string
+}
+class Commune <<registro SQL>> {
+ +id: integer
+ +name: string
+}
+class Contact <<registro SQL>> {
+ +point_id: string
+ +name_cipher: string
+ +email_cipher: string
+ +phone_cipher: string
+}
+class Report <<registro SQL>> {
+ +id: string
+ +point_version: integer
+ +generated_at: datetime
+}
+class PointService {
+ -repo: PointRepository
+ -vault: CryptoVault
+ +list(admin)
+ +get(id, admin)
+ +save(input, userId, id)
+ +reveal(id, field, userId)
+}
+class PointRepository {
+ -db: DatabaseSync
+ +list(admin)
+ +find(id)
+ +contact(id)
+ +transaction(fn)
+ +audit(userId, action, entityId)
+}
+class CryptoVault {
+ -key: Buffer
+ -privateKey: KeyObject
+ +publicKey: JWK
+ +encrypt(value, aad)
+ +decrypt(value, aad)
+ +openEnvelope(envelope, context)
+}
+Category "1" -- "0..*" Point
+Commune "1" -- "0..*" Point
+Point "1" *-- "0..1" Contact
+Point "1" -- "0..*" Report
+PointService --> PointRepository : repo
+PointService --> CryptoVault : vault
+PointRepository ..> Point : consulta
+note bottom of Point
+Los registros SQL se materializan como objetos JavaScript.
+No se declara una clase Point en el código.
+end note
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+start
+:Seleccionar un punto desde el mapa o la lista;
+:Solicitar descarga de informe;
+:Validar existencia y visibilidad del punto;
+if (¿Punto disponible?) then (No)
+ :Mostrar error recuperable;
+ stop
+else (Sí)
+ :Generar PDF con datos públicos y advertencia;
+ if (¿Generación correcta?) then (No)
+  :Mostrar error y permitir nueva solicitud;
+  stop
+ else (Sí)
+  :Registrar identificador, versión y fecha;
+  :Enviar PDF al navegador;
+  :Descargar archivo;
+  stop
+ endif
+endif
+@enduml

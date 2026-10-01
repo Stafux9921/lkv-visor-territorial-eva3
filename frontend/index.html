@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LKV · Visor territorial</title><link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="LKV inicio"><span class="brand-mark">L</span><span>LKV<span class="brand-sub">INTELIGENCIA TERRITORIAL</span></span></a>
+  <p class="nav-label">ESPACIO DE TRABAJO</p>
+  <nav aria-label="Navegación principal">
+    <button class="nav-item active" data-view="visor"><span>◈</span>Visor territorial</button>
+    <button class="nav-item" data-view="directory"><span>▤</span>Directorio de puntos</button>
+    <button class="nav-item" data-view="reports"><span>▧</span>Informes</button>
+    <button class="nav-item" data-view="manage"><span>⚙</span>Administración</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="pilot-icon">⌁</div><strong>Un territorio, más contexto.</strong><p>Explora información y convierte cada punto en una mejor conversación.</p><span class="version">PROTOTIPO · EVA 3 / V1.0</span></div>
+</aside>
+<div class="shell">
+<header class="topbar"><span class="breadcrumb">Proyecto LKV <span>/</span> Comuna piloto</span><div class="top-actions"><span class="local-state"><i></i>Entorno local</span><button id="authButton" class="account"><span class="avatar">L</span><span id="accountLabel">Acceso al equipo</span></button></div></header>
+<main id="main">
+  <div class="heading-row"><div><div class="eyebrow">EXPLORACIÓN TERRITORIAL</div><h1 id="pageTitle">El territorio, en perspectiva.</h1><p id="pageSubtitle">Consulta puntos de interés, explora sus fichas y prepara informes.</p></div><button id="newPoint" class="primary hidden">＋ Nuevo punto</button></div>
+  <div class="notice"><span class="notice-symbol">i</span><span><strong>Datos de demostración.</strong> Estimación referencial, sin carácter oficial, certificado ni definitivo.</span><span class="notice-tag">PILOTO</span></div>
+  <section id="stats" class="stats" aria-label="Resumen del conjunto"></section>
+  <section id="visorView" class="view">
+    <div class="workspace">
+      <div class="map-panel">
+        <div class="map-toolbar"><label class="search-label"><span>⌕</span><input id="search" type="search" placeholder="Buscar un punto de interés" aria-label="Buscar un punto"></label><select id="categoryFilter" aria-label="Filtrar por categoría"><option value="">Todas las categorías</option></select></div>
+        <div class="map-heading"><div><strong>Comuna piloto</strong><span>Distribución de puntos de interés</span></div><span class="chip">MAPA DEMOSTRATIVO</span></div>
+        <div id="mapCanvas" class="map-canvas" aria-label="Mapa esquemático de puntos de interés"></div>
+        <div class="map-controls"><button id="zoomIn" aria-label="Acercar mapa">＋</button><button id="zoomOut" aria-label="Alejar mapa">−</button><button id="resetMap" aria-label="Restablecer vista">⌖</button></div>
+        <div class="map-bottom"><div class="legend"><span><i class="dot green"></i>Equipamiento</span><span><i class="dot olive"></i>Espacio público</span><span><i class="dot terracotta"></i>Infraestructura</span></div><span>Esquema local · Sin cartografía oficial</span></div>
+      </div>
+      <aside id="detail" class="detail-panel" aria-label="Ficha del punto seleccionado"></aside>
+    </div>
+    <section class="list-section"><div class="section-title"><h2>Puntos en esta vista</h2><span id="resultCount"></span></div><div id="pointCards" class="point-cards"></div></section>
+  </section>
+  <section id="directoryView" class="view hidden"><div class="section-title"><h2>Directorio territorial</h2><p>La misma información del mapa, en una lista accesible.</p></div><div id="directoryList" class="directory-list"></div></section>
+  <section id="reportsView" class="view hidden"><div class="section-title"><h2>Informes generados</h2><p>Descarga una nueva versión desde la ficha correspondiente.</p></div><div id="reportList" class="directory-list"></div></section>
+  <section id="manageView" class="view hidden"><div id="manageContent"></div></section>
+  <footer>LKV · Visor Territorial Municipal <span>Proyecto académico INACAP · Datos sintéticos</span></footer>
+</main></div>
+<dialog id="authDialog"><form id="authForm"><div class="dialog-top"><span class="eyebrow">ESPACIO DEL EQUIPO</span><button type="button" class="icon-button close-dialog" aria-label="Cerrar">×</button></div><h2 id="authTitle">Ingresar al equipo</h2><p id="authHelp">Accede para administrar puntos y sus contactos protegidos.</p><label>Usuario<input id="username" required minlength="3" maxlength="40" autocomplete="username" placeholder="Tu usuario"></label><label>Contraseña<span class="sensitive-input"><input id="password" type="password" required minlength="12" maxlength="128" autocomplete="current-password"><button type="button" class="eye" data-eye="password" aria-label="Mostrar contraseña" aria-pressed="false"></button></span></label><p class="field-help">Entre 12 y 128 caracteres. Puedes usar una frase larga.</p><p id="authError" class="form-error" role="alert"></p><button class="primary full" id="authSubmit">Ingresar</button></form></dialog>
+<dialog id="pointDialog" class="wide-dialog"><form id="pointForm"><div class="dialog-top"><span class="eyebrow">GESTIÓN DE INFORMACIÓN</span><button type="button" class="icon-button close-dialog" aria-label="Cerrar">×</button></div><h2 id="pointFormTitle">Nuevo punto territorial</h2><p>Utiliza únicamente datos ficticios durante la demostración.</p><input id="editId" type="hidden"><input id="editVersion" type="hidden">
+<label>Nombre del punto<input id="pointName" required minlength="3" maxlength="100"></label><div class="form-grid"><label>Categoría<select id="pointCategory"></select></label><label>Estado<select id="pointStatus"><option value="publicado">Publicado</option><option value="borrador">Borrador</option><option value="retirado">Retirado</option></select></label><label>Latitud<input id="latitude" type="number" required min="-90" max="90" step="any" value="-33.45"></label><label>Longitud<input id="longitude" type="number" required min="-180" max="180" step="any" value="-70.66"></label></div><label>Descripción<textarea id="description" required minlength="3" maxlength="1200" rows="3"></textarea></label>
+<fieldset><legend>Contacto protegido <span>Opcional</span></legend><p class="field-help">Completa los tres campos para guardar o reemplazar el contacto. Déjalos vacíos para conservar el existente.</p>
+<label>Nombre del contacto<span class="sensitive-input"><input id="contactName" type="password" autocomplete="off" maxlength="100"><button type="button" class="eye" data-eye="contactName" aria-label="Mostrar nombre del contacto" aria-pressed="false"></button></span></label>
+<div class="form-grid"><label>Correo<span class="sensitive-input"><input id="contactEmail" type="password" autocomplete="off" maxlength="120"><button type="button" class="eye" data-eye="contactEmail" aria-label="Mostrar correo" aria-pressed="false"></button></span></label><label>Teléfono<span class="sensitive-input"><input id="contactPhone" type="password" autocomplete="off" maxlength="20"><button type="button" class="eye" data-eye="contactPhone" aria-label="Mostrar teléfono" aria-pressed="false"></button></span></label></div></fieldset>
+<p id="pointError" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="secondary close-dialog">Cancelar</button><button id="savePoint" class="primary">Guardar punto</button></div></form></dialog>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+</body></html>

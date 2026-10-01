@@ -1,0 +1,120 @@
+TAP version 13
+# Subtest: Plan de pruebas EVA3
+    # Subtest: CP01 Publicación inicial y ocultación de borradores
+    ok 1 - CP01 Publicación inicial y ocultación de borradores
+      ---
+      duration_ms: 10.573
+      type: 'test'
+      ...
+    # Subtest: CP02 Denegar escritura anónima
+    ok 2 - CP02 Denegar escritura anónima
+      ---
+      duration_ms: 14.8975
+      type: 'test'
+      ...
+    # Subtest: CP03 Rechazar credenciales sin cifrar
+    ok 3 - CP03 Rechazar credenciales sin cifrar
+      ---
+      duration_ms: 8.224
+      type: 'test'
+      ...
+    # Subtest: CP04 Configuración y cookie de sesión
+    ok 4 - CP04 Configuración y cookie de sesión
+      ---
+      duration_ms: 513.6234
+      type: 'test'
+      ...
+    # Subtest: CP05 Bloquear origen ajeno y CSRF ausente
+    ok 5 - CP05 Bloquear origen ajeno y CSRF ausente
+      ---
+      duration_ms: 25.1868
+      type: 'test'
+      ...
+    # Subtest: CP06 Validar coordenadas tipos y contenido HTML
+    ok 6 - CP06 Validar coordenadas tipos y contenido HTML
+      ---
+      duration_ms: 43.2904
+      type: 'test'
+      ...
+    # Subtest: CP07 Crear punto con contacto cifrado y comprobar persistencia
+    ok 7 - CP07 Crear punto con contacto cifrado y comprobar persistencia
+      ---
+      duration_ms: 47.9661
+      type: 'test'
+      ...
+    # Subtest: CP08 Revelado autorizado y evento sin datos sensibles
+    ok 8 - CP08 Revelado autorizado y evento sin datos sensibles
+      ---
+      duration_ms: 59.3251
+      type: 'test'
+      ...
+    # Subtest: CP09 Control de concurrencia y retiro de publicación
+    ok 9 - CP09 Control de concurrencia y retiro de publicación
+      ---
+      duration_ms: 46.5975
+      type: 'test'
+      ...
+    # Subtest: CP10 PDF referencial válido y sin datos privados
+    ok 10 - CP10 PDF referencial válido y sin datos privados
+      ---
+      duration_ms: 12.4596
+      type: 'test'
+      ...
+    # Subtest: CP11 Rechazar sobres reutilizados o manipulados
+    ok 11 - CP11 Rechazar sobres reutilizados o manipulados
+      ---
+      duration_ms: 65.6806
+      type: 'test'
+      ...
+    # Subtest: CP12 Integridad referencial y atomicidad ante datos inválidos
+    ok 12 - CP12 Integridad referencial y atomicidad ante datos inválidos
+      ---
+      duration_ms: 8.2919
+      type: 'test'
+      ...
+    # Subtest: CP13 Cierre de sesión e invalidación del token
+    ok 13 - CP13 Cierre de sesión e invalidación del token
+      ---
+      duration_ms: 17.917
+      type: 'test'
+      ...
+    # Subtest: CP14 Permisos del rol consultor
+    ok 14 - CP14 Permisos del rol consultor
+      ---
+      duration_ms: 908.2067
+      type: 'test'
+      ...
+    # Subtest: CP15 Expiración de sesión
+    ok 15 - CP15 Expiración de sesión
+      ---
+      duration_ms: 26.5762
+      type: 'test'
+      ...
+    # Subtest: CP16 Bloquear rutas internas y cabeceras seguras
+    ok 16 - CP16 Bloquear rutas internas y cabeceras seguras
+      ---
+      duration_ms: 7.1338
+      type: 'test'
+      ...
+    # Subtest: CP17 Limitación de intentos de autenticación
+    ok 17 - CP17 Limitación de intentos de autenticación
+      ---
+      duration_ms: 133.5915
+      type: 'test'
+      ...
+    1..17
+ok 1 - Plan de pruebas EVA3
+  ---
+  duration_ms: 2980.9607
+  type: 'test'
+  ...
+1..1
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3172.8982
+

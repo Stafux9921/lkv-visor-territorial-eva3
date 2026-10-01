@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-01T03:40:25.507Z",
+  "result": "aprobado",
+  "viewportDesktop": "1440x1100",
+  "viewportMobile": "360x800",
+  "cases": [
+    "filtro",
+    "descarga PDF",
+    "configuración inicial",
+    "creación de punto",
+    "máscara al escribir",
+    "ojito de entrada",
+    "revelado autorizado",
+    "ocultación a los 15 s",
+    "administración",
+    "directorio",
+    "informes",
+    "sin desbordamiento móvil",
+    "sin errores JavaScript"
+  ],
+  "errors": []
+}

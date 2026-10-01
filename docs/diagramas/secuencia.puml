@@ -1,0 +1,36 @@
+@startuml
+actor Administrador
+boundary "Frontend" as UI
+control "Servidor HTTP" as HTTP
+control PointService as Service
+entity PointRepository as Repo
+database SQLite as DB
+participant CryptoVault as Vault
+Administrador -> UI: Pulsar ojito del correo
+UI -> HTTP: POST /api/points/{id}/reveal\nCookie + CSRF + {field: email}
+HTTP -> HTTP: Validar origen, sesión, rol y CSRF
+alt Sesión o permiso inválido
+ HTTP --> UI: 401 o 403
+ UI --> Administrador: Mostrar error y conservar máscara
+else Acceso válido
+ HTTP -> Service: reveal(id, email, userId)
+ Service -> Repo: find(id) y contact(id)
+ Repo -> DB: SELECT parametrizado
+ DB --> Repo: Punto y contacto cifrado
+ Repo --> Service: Registros
+ alt Punto o contacto inexistente
+  Service --> HTTP: AppError 404
+  HTTP --> UI: 404
+ else Registros disponibles
+  Service -> Vault: decrypt(email_cipher, id:email)
+  Vault --> Service: valor
+  Service -> Repo: audit(userId, revelar_email, id)
+  Repo -> DB: INSERT de evento sin contenido sensible
+  Service --> HTTP: {value, hideAfterSeconds: 15}
+  HTTP --> UI: 200 y Cache-Control no-store
+  UI --> Administrador: Mostrar correo
+  ... 15 segundos o pérdida de foco ...
+  UI -> UI: Reemplazar valor por máscara
+ end
+end
+@enduml

@@ -1,0 +1,7 @@
+runtime/
+node_modules/
+*.log
+.env
+__pycache__/
+.qa/
+entrega/*.zip

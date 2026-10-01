@@ -1,0 +1,13 @@
+{
+  "name": "lkv-visor-territorial",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prototipo académico del Visor Territorial Municipal LKV",
+  "engines": {"node": ">=24.2.0"},
+  "scripts": {
+    "start": "node backend/server.js",
+    "test": "node --test tests/*.test.js",
+    "backup": "node scripts/backup.js"
+  }
+}

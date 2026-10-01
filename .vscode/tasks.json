@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LKV iniciar",
+      "type": "shell",
+      "command": "node backend/server.js",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "LKV pruebas",
+      "type": "shell",
+      "command": "node --test tests/*.test.js",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

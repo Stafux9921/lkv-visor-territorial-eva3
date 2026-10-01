@@ -1,0 +1,146 @@
+TAP version 13
+# Subtest: Plan de pruebas EVA3
+    # Subtest: CP01 Publicación inicial y ocultación de borradores
+    ok 1 - CP01 Publicación inicial y ocultación de borradores
+      ---
+      duration_ms: 7.6679
+      type: 'test'
+      ...
+    # Subtest: CP02 Denegar escritura anónima
+    ok 2 - CP02 Denegar escritura anónima
+      ---
+      duration_ms: 9.2296
+      type: 'test'
+      ...
+    # Subtest: CP03 Rechazar credenciales sin cifrar
+    ok 3 - CP03 Rechazar credenciales sin cifrar
+      ---
+      duration_ms: 6.6777
+      type: 'test'
+      ...
+    # Subtest: CP04 Configuración y cookie de sesión
+    ok 4 - CP04 Configuración y cookie de sesión
+      ---
+      duration_ms: 505.7787
+      type: 'test'
+      ...
+    # Subtest: CP05 Bloquear origen ajeno y CSRF ausente
+    ok 5 - CP05 Bloquear origen ajeno y CSRF ausente
+      ---
+      duration_ms: 13.9178
+      type: 'test'
+      ...
+    # Subtest: CP06 Validar coordenadas tipos y contenido HTML
+    ok 6 - CP06 Validar coordenadas tipos y contenido HTML
+      ---
+      duration_ms: 64.0309
+      type: 'test'
+      ...
+    # Subtest: CP07 Crear punto con contacto cifrado y comprobar persistencia
+    ok 7 - CP07 Crear punto con contacto cifrado y comprobar persistencia
+      ---
+      duration_ms: 60.9045
+      type: 'test'
+      ...
+    # Subtest: CP08 Revelado autorizado y evento sin datos sensibles
+    ok 8 - CP08 Revelado autorizado y evento sin datos sensibles
+      ---
+      duration_ms: 77.3763
+      type: 'test'
+      ...
+    # Subtest: CP09 Control de concurrencia y retiro de publicación
+    ok 9 - CP09 Control de concurrencia y retiro de publicación
+      ---
+      duration_ms: 77.4463
+      type: 'test'
+      ...
+    # Subtest: CP10 PDF referencial válido y sin datos privados
+    not ok 10 - CP10 PDF referencial válido y sin datos privados
+      ---
+      duration_ms: 51.4264
+      type: 'test'
+      location: 'S:\\Inacap\\Semestre 4\\Ing Software\\ProyectoLKV_EVA3\\tests\\security.test.js:75:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        El PDF no debe perder texto largo sin espacios
+        
+        85 !== 130
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 130
+      actual: 85
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:80:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        async Test.run (node:internal/test_runner/test:1389:7)
+        async TestContext.<anonymous> (file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:75:5)
+        async Test.run (node:internal/test_runner/test:1389:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+        async file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:32:1
+      ...
+    # Subtest: CP11 Rechazar sobres reutilizados o manipulados
+    ok 11 - CP11 Rechazar sobres reutilizados o manipulados
+      ---
+      duration_ms: 73.3762
+      type: 'test'
+      ...
+    # Subtest: CP12 Integridad referencial y atomicidad ante datos inválidos
+    ok 12 - CP12 Integridad referencial y atomicidad ante datos inválidos
+      ---
+      duration_ms: 15.4775
+      type: 'test'
+      ...
+    # Subtest: CP13 Cierre de sesión e invalidación del token
+    ok 13 - CP13 Cierre de sesión e invalidación del token
+      ---
+      duration_ms: 43.8557
+      type: 'test'
+      ...
+    # Subtest: CP14 Permisos del rol consultor
+    ok 14 - CP14 Permisos del rol consultor
+      ---
+      duration_ms: 875.0826
+      type: 'test'
+      ...
+    # Subtest: CP15 Expiración de sesión
+    ok 15 - CP15 Expiración de sesión
+      ---
+      duration_ms: 34.6551
+      type: 'test'
+      ...
+    # Subtest: CP16 Bloquear rutas internas y cabeceras seguras
+    ok 16 - CP16 Bloquear rutas internas y cabeceras seguras
+      ---
+      duration_ms: 46.2212
+      type: 'test'
+      ...
+    # Subtest: CP17 Limitación de intentos de autenticación
+    ok 17 - CP17 Limitación de intentos de autenticación
+      ---
+      duration_ms: 118.0735
+      type: 'test'
+      ...
+    1..17
+not ok 1 - Plan de pruebas EVA3
+  ---
+  duration_ms: 3388.0859
+  type: 'test'
+  location: 'S:\\Inacap\\Semestre 4\\Ing Software\\ProyectoLKV_EVA3\\tests\\security.test.js:32:7'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    async file:///S:/Inacap/Semestre%204/Ing%20Software/ProyectoLKV_EVA3/tests/security.test.js:32:1
+  ...
+1..1
+# tests 18
+# suites 0
+# pass 16
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3717.1587
+
